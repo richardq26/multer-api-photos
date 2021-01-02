@@ -15,7 +15,7 @@ porque los tipos solo son para desarrollo
 Crear carpeta nodemon.json
 npm i ts-node para poder poder ejecutar nodemon con archivos ts
 # Algunos módulos nuevos usados
-Módulo rimraf para eliminar 
-Módulo uuid genera strings aleatorios
-Módulo fs-extra permite trabajar con archivos y soporta promesas
+Módulo rimraf para eliminar.
+Módulo uuid genera strings aleatorios.
+Módulo fs-extra permite trabajar con archivos y soporta promesas.
        fs no soporta promesas
