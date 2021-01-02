@@ -72,9 +72,6 @@ export async function deletePhoto(req: Request, res: Response) {
 }
 
 // Actualizar una foto
-
-// Si quisiera que me devuelva la nueva foto en el else se usa
-// {new: true},
 export async function updatePhoto(req: Request, res: Response) {
     await Photo.findByIdAndUpdate(req.params.id,
         { title: req.body.title, description: req.body.description },
@@ -89,7 +86,7 @@ export async function updatePhoto(req: Request, res: Response) {
                     return res.status(200).json({ ok: true, 'Foto actualizada: ': actu })
                 }
             } catch (error) {
-                return res.status(500).json({ ok: false, err, msg: 'Ocurrió un error' });
+                return res.status(500).json({ ok: false, error, msg: 'Ocurrió un error' });
             }
 
         });
