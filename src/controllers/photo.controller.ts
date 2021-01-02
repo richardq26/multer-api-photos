@@ -72,20 +72,27 @@ export async function deletePhoto(req: Request, res: Response) {
 }
 
 // Actualizar una foto
-export async function updatePhoto(req: Request, res: Response): Promise<Response> {
-    const foto_nueva= await Photo.findByIdAndUpdate(req.params.id,
+
+// Si quisiera que me devuelva la nueva foto en el else se usa
+// {new: true},
+export async function updatePhoto(req: Request, res: Response) {
+    await Photo.findByIdAndUpdate(req.params.id,
         { title: req.body.title, description: req.body.description },
+        { new: true }, // Para que me devuelva el objeto actualizado
         (err, actu) => {
-            if (err) {
-                res.status(500).json({ ok: false, err });
+            try {
+                if (!actu) {
+                    return res.status(400).json({ ok: false, msg: 'No existe una foto con ese id' });
+                }
+
+                else {
+                    return res.status(200).json({ ok: true, 'Foto actualizada: ': actu })
+                }
+            } catch (error) {
+                return res.status(500).json({ ok: false, err, msg: 'Ocurrió un error' });
             }
-            if (!actu) {
-                res.status(400).json({ ok: false, msg: 'No existe una foto con ese id' });
-            }
+
         });
-        if(foto_nueva){
-            return res.json({ ok: true,msg:'Foto actualizada', 'Foto nueva: ': foto_nueva});
-        }else{
-            return res.json({ok: false, msg: 'No se pudo actualizar la foto'});
-        }
+
+
 }
