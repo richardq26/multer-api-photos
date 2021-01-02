@@ -1,4 +1,4 @@
-# Api de notas
+# Api de fotos con multer
 
 ## Installs
 npm i typescript  
