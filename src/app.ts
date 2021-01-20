@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import router from './routes/index';
 import path from 'path';
+import cors from 'cors';
 const app = express();
 
 // Settings
@@ -11,6 +12,9 @@ app.set("port", process.env.PORT || 3000);
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+//habilitando cors:
+app.use(cors());
 
 // Rutas
 app.use('/api', router);

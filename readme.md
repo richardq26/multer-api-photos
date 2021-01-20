@@ -19,3 +19,6 @@ Módulo rimraf para eliminar.
 Módulo uuid genera strings aleatorios.  
 Módulo fs-extra permite trabajar con archivos y soporta promesas.  
        fs no soporta promesas
+
+# Para producción
+npm run build
